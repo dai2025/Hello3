@@ -10,3 +10,5 @@ $(TARGET): $(OBJS)
 	$(CC) -o $@ $(OBJS)
 clean:
 	rm -f *.o Hello3
+check:
+	./$(TARGET)
