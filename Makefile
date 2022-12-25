@@ -4,7 +4,8 @@ OBJS=Hello.o Hello3.o
 
 TARGET=Hello3
 
-#spaces -> Tabs 8
+# gcc -pass-exit-codes
+# spaces -> Tabs 8
 $(TARGET): $(OBJS)
 	$(CC) -o $@ $(OBJS)
 clean:
