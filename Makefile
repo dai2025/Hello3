@@ -4,7 +4,6 @@ OBJS=Hello.o Hello3.o
 
 TARGET=Hello3
 
-#speces
 #spaces -> Tabs 8
 $(TARGET): $(OBJS)
 	$(CC) -o $@ $(OBJS)
