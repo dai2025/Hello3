@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-O0 -Wall
+CFLAGS=-O0 -Wall -std=c11
 OBJS=Hello.o Hello3.o
 
 TARGET=Hello3
