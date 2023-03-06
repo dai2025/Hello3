@@ -1,3 +1,3 @@
-int sub2(void) {
+int sub2(void/* arg*/) {
 	return -1;
 }
