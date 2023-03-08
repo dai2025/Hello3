@@ -1,25 +1,16 @@
-CC=gcc
-CFLAGS=-Wall -Wextra -pthread
-SRCDIR=src
-OBJDIR=obj
-BINDIR=bin
-TARGET=$(BINDIR)/main
+CC = gcc
+CFLAGS = -Wall -Wextra -pthread
+SRCDIR = src
+BINDIR = bin
+SRCS = $(wildcard $(SRCDIR)/*.c)
+OBJS = $(patsubst $(SRCDIR)/%.c,$(BINDIR)/%.o,$(SRCS))
+TARGET = main
 
-SRCS=$(wildcard $(SRCDIR)/*.c)
-OBJS=$(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
-
-.PHONY: all clean
-
-all: $(TARGET)
-
-$(TARGET): $(OBJS) | $(BINDIR)
+$(BINDIR)/$(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) $^ -o $@
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+$(BINDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJDIR) $(BINDIR):
-	mkdir -p $@
-
 clean:
-	rm -rf $(OBJDIR) $(BINDIR)
+	rm -f $(BINDIR)/*.o $(BINDIR)/$(TARGET)
