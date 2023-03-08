@@ -1,6 +1,6 @@
 #include "sub.h"
 
-#include <pthread.h>
+// #include <pthread.h>
 
 int sub1(void) {
     return -1;
