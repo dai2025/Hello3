@@ -1,5 +1,11 @@
 #include "sub.h"
 
-int sub(void) {
-  return -1;
+#include <pthread.h>
+
+int sub1(void) {
+    return -1;
+}
+
+int sub2(void) {
+    return -2;
 }
