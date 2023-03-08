@@ -1,14 +1,25 @@
 CC=gcc
-CFLAGS=-O0 -Wall -std=c11
-OBJS=Hello.o Hello3.o
+CFLAGS=-Wall -Wextra -pthread
+SRCDIR=src
+OBJDIR=obj
+BINDIR=bin
+TARGET=$(BINDIR)/main
 
-TARGET=Hello3
+SRCS=$(wildcard $(SRCDIR)/*.c)
+OBJS=$(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
 
-# gcc -pass-exit-codes
-# spaces -> Tabs 8
-$(TARGET): $(OBJS)
-	$(CC) -o $@ $(OBJS)
+.PHONY: all clean
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS) | $(BINDIR)
+	$(CC) $(CFLAGS) $^ -o $@
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJDIR) $(BINDIR):
+	mkdir -p $@
+
 clean:
-	rm -f *.o Hello3
-check:
-	./$(TARGET)
+	rm -rf $(OBJDIR) $(BINDIR)
