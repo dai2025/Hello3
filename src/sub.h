@@ -1,6 +1,7 @@
-#ifndef SUB_H_
-#define SUB_H_
+#ifndef SUB_H_INCLUDED
+#define SUB_H_INCLUDED
 
-int sub(void);
+int sub1(void);
+int sub2(void);
 
-#endif
+#endif // SUB_H_INCLUDED
