@@ -1,34 +1,26 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <pthread.h>
+#include "sub.h"
 
-//
-extern int sub(void);
-
-//
-void* thread_function(void* arg) {
-    printf("Thread starting...\n");
-    int result = sub();
-    printf("Sub function result: %d\n", result);
-    printf("Thread exiting...\n");
-    return NULL;
+void *thread_function(void *arg) {
+  printf("Thread running\n");
+  int result = sub();
+  printf("Result from thread: %d\n", result);
+  pthread_exit(NULL);
 }
 
-int main(int argc, char* argv[]) {
-    //
-    pthread_t thread;
-    if (pthread_create(&thread, NULL, thread_function, NULL)) {
-        fprintf(stderr, "Error creating thread\n");
-        return 1;
-    }
-
-    printf("Main function executing...\n");
-    //
-    if (pthread_join(thread, NULL)) {
-        fprintf(stderr, "Error joining thread\n");
-        return 2;
-    }
-
-    printf("Main function exiting...\n");
-    return 0;
+int main() {
+  pthread_t my_thread;
+  printf("Creating thread\n");
+  if (pthread_create(&my_thread, NULL, thread_function, NULL)) {
+    printf("error creating thread.");
+    abort();
+  }
+  printf("Waiting for thread to finish\n");
+  if (pthread_join(my_thread, NULL)) {
+    printf("error joining thread.");
+    abort();
+  }
+  printf("Thread finished\n");
+  return 0;
 }
