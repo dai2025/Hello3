@@ -29,6 +29,7 @@ jobs:
         rustc --crate-type=dylib src/lib.rs
         rustc --crate-type=staticlib src/lib.rs
         ls -l
+        gcc -c Hello.c
         gcc -L. -lliblib.a ../Hello3.c 
         gcc -L. -lliblib.so ../Hello3.c 
         rustc -L. src/main.rs
