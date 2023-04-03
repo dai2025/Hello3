@@ -21,6 +21,9 @@ jobs:
         cd rust1
         rustc --crate-type=lib src/lib.rs
         rustc --emit=llvm-ir src/main.rs
+        cargo fmt
+        ls -l
+        ls -l src/
       # cargo build --verbose
     # - name: Run tests
       # run: cargo test --verbose
