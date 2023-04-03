@@ -30,7 +30,7 @@ jobs:
         rustc --crate-type=staticlib src/lib.rs      
         gcc -c ../Hello.c
         ls -l
-        gcc -L. -lliblib.a Hello.o ../Hello3.c 
+        gcc -L. -lliblib Hello.o ../Hello3.c 
         gcc -L. -lliblib.so Hello.o ../Hello3.c 
         rustc -L. src/main.rs
       # cargo build --verbose
