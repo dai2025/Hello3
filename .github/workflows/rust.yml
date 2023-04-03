@@ -22,17 +22,18 @@ jobs:
         rustc --crate-type=lib src/lib.rs
         # rustc -Z --emit=llvm-ir src/main.rs
         cargo fmt
-        ls -l
-        ls -l src/
+        # ls -l
+        # ls -l src/
         # rustc -L. src/main.rs
         cargo fmt --check
         rustc --crate-type=dylib src/lib.rs
         rustc --crate-type=staticlib src/lib.rs      
         gcc -c ../Hello.c
-        ls -l
+        # ls -l
         gcc -L. -l:liblib.a Hello.o ../Hello3.c 
+        ./a.out && ls -l
         # gcc -L. -lliblib.so Hello.o ../Hello3.c 
-        rustc -L. src/main.rs
+        # rustc -L. src/main.rs
       # cargo build --verbose
     # - name: Run tests
       # run: cargo test --verbose
