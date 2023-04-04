@@ -1,0 +1,9 @@
+[package]
+name = "rust3"
+version = "0.0.0"
+authors = ["dai"]
+edition = "2021"
+
+[[bin]]
+name = "rust3"
+path = "src/main.rs"
